@@ -1,0 +1,18 @@
+﻿</ul><!-- /end .inner -->
+</div><!-- /end #page -->
+<!--[if lte IE 7]><script type="text/javascript" src="http://alistapart.com/d/responsive-web-design/ex/siteimgSizer.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	imgSizer.collate();
+}
+</script><![endif]-->
+<!--[if lte IE 6]><script type="text/javascript" src="share/ddpng.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('body, #page, h1, h1 img, ul.nav, ul.nav a, .main h2, .main h2 b, .footer');
+</script><![endif]-->
+</body>
+</div>
+<footer>
+Copyright 2015 Ctlumination LLC
+</footer>
+</html>

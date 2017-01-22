@@ -1,0 +1,675 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>A Flexible Grid</title>
+
+<meta name="DC.creator" content="Ethan Marcotte - http://unstoppablerobotninja.com/" />
+<meta name="DC.language" content="en" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style type="text/css" media="screen, projection">
+/* This is the overall page css script*/
+.mast {
+	float: left;
+	width: 15%;
+}
+.intro {
+	float: right;
+	width: 84%;
+}
+.intro div {
+	line-height: 1.2;
+}
+  /* unvisited link */
+a:link {
+    color:#B4EEF0;
+}
+/* visited link */
+a:visited {
+    color: yellow;
+}
+/* mouse over link */
+a:hover {
+    color: #2DC6C4;
+font-weight: bold;
+}
+/* selected link */
+a:active {
+    color: black;
+}
+.viewcart input {height:25px;}
+header {
+ 	width:100%;
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: white;
+    font-weight: bold;  
+    text-align:center;
+    padding: 5px;	 
+    background: -moz-linear-gradient(top, #007DAA 0%, #00678C 44%, #004C68 100%); /* FF3.6+ */
+  	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#007DAA), color-stop(44%,#00678C), color-stop(100%,#004C68)); /* Chrome,Safari4+ */
+  	background: -webkit-linear-gradient(top, #007DAA 0%,#00678C 44%,#004C68 100%); /* Chrome10+,Safari5.1+ */
+  	background: -o-linear-gradient(top, #007DAA 0%,#00678C 44%,#004C68 100%); /* Opera 11.10+ */
+  	background: -ms-linear-gradient(top, #007DAA 0%,#00678C 44%,#004C68 100%); /* IE10+ */
+  	background: linear-gradient(top, #007DAA 0%,#00678C 44%,#004C68 100%); /* W3C */
+  	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007DAA', endColorstr='#004C68',GradientType=0 ); /* IE6-9 */
+}
+nav {
+    line-height:30px;
+    background-color: #eeeeee;
+    width:100%;
+    float: left;
+    padding-top: 0px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+    padding-left: 0px; 
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0px auto;
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+     -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+          box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+section {
+    width:1200px;
+    float:left;
+    padding:10px;	 	 
+}
+footer {
+    width:100%;
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+/* This is the left memu script*/
+ * {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  background: #e5e5e7;
+}
+.menu-item {
+  background: #fff;
+  width: 100%; 
+}
+/*Menu Header Styles*/
+.menu-item h4 {
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  border-top: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px;    
+  margin: 0px;
+  /*Gradient*/
+  background: #007DAA
+; /* Old browsers */
+  background: -moz-linear-gradient(top, #007DAA
+ 0%, #00678C 44%, #004C68 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#007DAA
+), color-stop(44%,#00678C), color-stop(100%,#004C68)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #007DAA
+ 0%,#00678C 44%,#004C68 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #007DAA
+ 0%,#00678C 44%,#004C68 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #007DAA
+ 0%,#00678C 44%,#004C68 100%); /* IE10+ */
+  background: linear-gradient(top, #007DAA
+ 0%,#00678C 44%,#004C68 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007DAA', endColorstr='#004C68',GradientType=0 ); /* IE6-9 */
+}
+.menu-item h4:hover {  
+  background: #0096CC; /* Old browsers */
+  background: -moz-linear-gradient(top,  #0096CC 0%, #004C68 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0096CC), color-stop(100%,#004C68)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #0096CC 0%,#004C68 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #0096CC 0%,#004C68 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #0096CC 0%,#004C68 100%); /* IE10+ */
+  background: linear-gradient(top,  #0096CC 0%,#004C68 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0096CC', endColorstr='#004C68',GradientType=0 ); /* IE6-9 */
+}
+.menu-item h4 a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  width: 300px;
+  padding-left: 10px;
+}
+/*ul Styles*/
+.menu-item ul {
+  background: #fff;
+  font-size: 13px;
+  line-height: 15px;
+  height: 0px;
+  list-style-type: none;
+  overflow: hidden;
+  padding: 0px;    
+  margin: 0px;
+  /*Animation*/
+  -webkit-transition: height 1s ease;
+     -moz-transition: height 1s ease;
+       -o-transition: height 1s ease;
+      -ms-transition: height 1s ease;
+          transition: height 1s ease;
+}
+.menu-item:hover ul {
+  height: 160px;
+}
+.menu-item ul a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #aaa;
+  display: block;
+  width: 200px;
+}
+/*li Styles*/
+.menu-item li {
+  border-bottom: 1px solid #eee;
+}
+.menu-item li:hover {
+  background: #eee;
+}
+/*First Item Styles*/
+.alpha p {
+	padding: 8px 12px;
+	color: #aaa;
+}
+.alpha p a {
+	color: #aaa;
+	font-style: italic;
+}
+.alpha p a:hover {
+	color: #ccc;
+}
+</*This is the script for the products section*/   
+* {margin: 0;padding: 0;}
+body {background: url('Examples/images/noise_light-grey.jpg');
+font-family: 'Helvetica Neue', arial, sans-serif;font-weight: 200;
+}
+.container { width: 200px; height:344px; border:2px solid black;}
+.zit
+{
+    position:relative;
+    width:200px;
+    height:150px;
+    left:0px;
+    top:0px;
+    border:2px solid black;
+    /* Apply a CSS3 Transition to width, height, top and left properties. Notice that each time I duplicate the "transition" line and add the -webkit- and -moz- -o- prefixes needed for other browsers (Mozilla, chrome, opera, …) */
+    transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
+    -webkit-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
+    -o-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
+    -moz-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
+}
+.zit:hover{width:400px;height:300px;left:25px;top:25px;z-index:9999;}
+.ZoomIt ul{clear:both;}
+.ZoomIt li
+{
+width:200px;
+height:500px;
+margin:4px;
+float: left;
+overflow:visible;
+display: block;
+}
+/* this rounds the corners of the images*/
+.ZoomIt img{
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* this is to reproduce table-like structure*/
+  .table { display:table; table-layout:fixed; width:200px; }
+  .row { display:table-row; font-family: 'Helvetica Neue', arial, sans-serif; font-size: .75em}
+  .cell { padding-left:1px; display:table-cell; border:1px solid grey; }
+  /* this is where the colspan tricks works. */
+  span { width:100%; }
+  /* !st and last column width are specified and then the center column is set to fill 100% of the remainder of the table width */
+  .col1 { width: 95px;}
+  .col3 { width: 95px;}
+  .col2 { width: 100%;}
+  .colspanned {text-align: center; }
+  .cart1 select {height: 30px; width:101px;}
+  .cart1 {padding-left:0px;height:27px;width:101px;}
+  .cart3 input {padding-top:5px; height:19px; float:left;}
+  .table1 > .row1 {height:20px; color: red;;font-size: 20px; font-weight: bold;}
+  .table2 > .row1 {height:16px;}
+  .table3 > .row1 {height:16px;}
+  .table4 > .row1 {height:16px;}
+  .table5 > .row1 {height:32px;color: #F5AF0B;}
+  .table6 > .table > .row1 {height:48px;}
+  .table7 > .row1 {height:48px;}
+  .table6 > .row2 {height:64px;color: #F5AF0B;}
+  .table9 > .row1 {height:16px;}
+  .table10 > .row1 {height:16px;color: red; font-size: 20px; font-weight: bold;}
+    </style>
+</head>
+<header>
+<form><img src="http://www.autolumination.com/lilparts/banner4.png"/></form>
+<a href="http://www.lilparts.com/contact_us.htm">Contact Us</a>
+		Email:<a href="mailto:superlumination@cox.net">superlumination@cox.net</a>
+<!--This is the search box-->		
+		<form action="search.php" method="post" name="search_form" id="search_form">
+						Search <input name="search" type="text" id="search"/>
+ 						<input type="submit" name="Submit" value="Go"/>
+		</form>
+		<!--This is the view cart button-->		
+			<div class="viewcart">
+			<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_cart">
+ 			<input type="hidden" name="business" value="superlumination@cox.net">
+ 			<input type="hidden" name="display" value="1">
+ 			<input type="image" src="https://www.paypal.com/en_US/i/btn/view_cart.gif" name="I6">
+ 			</form>
+ 			</div>
+</header>
+<body>
+<div id="page">
+	<div class="inner">
+		<div class="mast">
+				<nav>
+		    <div class="menu-item alpha">
+		      <h4><a href="http://www.lilparts.com">Home</a></h4>
+		      <p>Lilparts.com - All the little hard to find parts for you car, truck, motorcycle, boat and RV <a href="mailto:superlumination@cox.net">Click here</a> to email us a question.</p>
+		    </div>
+		      
+		    <div class="menu-item">
+		      <h4><a href="#">Acura</a></h4>
+		      <ul>
+		        <li><a href="http://www.lilparts.com/acura_push_type_retainers.htm">Push Type Retainers</a></li>
+		        <li><a href="http://www.lilparts.com/acura_button_head_retainers.htm">Button Head Retainers</a></li>
+		  	    <li><a href="http://www.lilparts.com/acura_nylon_nuts_inserts_grommets.htm">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="http://www.lilparts.com/acura_window_moulding_trim_clips.htm">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="http://www.lilparts.com/acura_u_j_fold_over_floating_nuts.htm">U J Fold Over Floating Nuts</a></li>
+				<li><a href="http://www.lilparts.com/acura_door_tailgate_hood_lock_clips.htm">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="http://www.lilparts.com/acura_nuts_bolts_washers_screws.htm">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="http://www.lilparts.com/acura_lightb_bulbs.htm">Light Bulbs</a></li>
+                <li><a href="http://www.lilparts.com/acura_electrical_contacts_sockets_connectors_fuses.htm">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+		      
+		    <div class="menu-item">
+		      <h4><a href="#">Audi</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+		      
+		    <div class="menu-item">
+		      <h4><a href="#">BMW</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+		    
+		       <div class="menu-item">
+		      <h4><a href="#">Chevrolet</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Chrysler</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Dodge</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Fiat</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Ford</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">GM</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Honda</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Hyundai</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Infinity</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Isuzu</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+		    <div class="menu-item">
+		      <h4><a href="#">Kia</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+		      
+		    <div class="menu-item">
+		      <h4><a href="#">Lexus</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+		      
+		    <div class="menu-item">
+		      <h4><a href="#">Mazda</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+		    
+		       <div class="menu-item">
+		      <h4><a href="#">Mercedes Benz</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Mitsubishi</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Nissan</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Subaru</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Suzuki</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+
+   <div class="menu-item">
+		      <h4><a href="#">Toyota</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+   <div class="menu-item">
+		      <h4><a href="#">Volkswagon</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+   <div class="menu-item">
+		      <h4><a href="#">Volvo</a></h4>
+		      <ul>
+		        <li><a href="#">Push Type Retainers</a></li>
+		        <li><a href="#">Button Head Retainers</a></li>
+		  	    <li><a href="#">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="#">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="#">U J Fold Over Floating Nuts</a></li>
+				<li><a href="#">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="#">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="#">Light Bulbs</a></li>
+                <li><a href="#">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+   <div class="menu-item">
+		      <h4><a href="#">All Makes</a></h4>
+		      <ul>
+		        <li><a href="http://www.lilparts.com/all_push_type_retainers.htm">Push Type Retainers</a></li>
+		        <li><a href="http://www.lilparts.com/all_button_head_retainers.htm">Button Head Retainers</a></li>
+		  	    <li><a href="http://www.lilparts.com/all_nylon_nuts_inserts_grommets.htm">Nylon Nuts Inserts & Grommets</a></li>
+			  	<li><a href="http://www.lilparts.com/all_window_moulding_trim_clips.htm">Window Moulding & Trim Clips</a></li>
+	  		  	<li><a href="http://www.lilparts.com/all_u_j_fold_over_floating_nuts.htm">U J Fold Over Floating Nuts</a></li>
+				<li><a href="http://www.lilparts.com/all_door_tailgate_hood_lock_clips.htm">Door Tailgate Hood Lock Clips</a></li>	        
+		        <li><a href="http://www.lilparts.com/all_nuts_bolts_washers_screws.htm">Nuts Bolts Washers & Screws</a></li>
+		        <li><a href="http://www.lilparts.com/all_lightb_bulbs.htm">Light Bulbs</a></li>
+                <li><a href="http://www.lilparts.com/all_electrical_contacts_sockets_connectors_fuses.htm">Electrical Contacts Sockets Connectors & Fuses</a></li>
+		      </ul>
+		    </div>
+   <div class="menu-item">
+		      <h4><a href="#">Misc. Information</a></h4>
+		      <ul>
+		        <li><a href="http://www.lilparts.com/shipping.htm">Shipping Costs</a></li>
+		        <li><a href="http://www.lilparts.com/policies.htm">Policies</a></li>
+		        <li><a href="http://www.lilparts.com/cp/client_frontend/index.php">Lookup Orders & Tracking</a></li>
+		        <li><a href="http://www.lilparts.com/contact_us.htm">Contact Us</a></li>
+		        <li><a href="http://www.lilparts.com/about.htm">About Us</a></li>
+		      </ul>
+		    </div>
+
+		</nav>
+		</div><!-- /end .mast -->
+
+		<div class="section intro">
+			<div>
+			<h1>Acura Nylon Retainer Fastener Clips</h1>
+	<div class="ZoomIt">
+   <ul>
