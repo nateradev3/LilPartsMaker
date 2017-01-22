@@ -15,8 +15,8 @@ namespace LilPartsMaker
         private string csvFile = "";
         private string xlsFile = "";
         private string saveLocation = "";
-        private readonly string topOfPageFile = "topOfPage.txt";
-        private readonly string bottomOfPageFile = "bottomOfPage.txt";
+        private readonly string TOP_OF_PAGE_FILE = "topOfPage.txt";
+        private readonly string BOTTOM_OF_PAGE_FILE = "bottomOfPage.txt";
         private ArrayList items;
         private HashSet<string> makes;
         private ArrayList categories;
@@ -52,15 +52,6 @@ namespace LilPartsMaker
             } else {
                 return loadXls();
             }
-        }
-
-        public ArrayList getCategories()
-        {
-            return categories;
-        }
-        public Dictionary<string, ArrayList> getMakeToCategories()
-        {
-            return makeToCategories;
         }
 
         public void makeAllPage()
@@ -132,6 +123,19 @@ namespace LilPartsMaker
             }
         }
 
+        public void makeCarAndCategoryPages()
+        {
+            foreach (string make in makes)
+            {
+                makeCarPage(make);
+                //get categories of this make
+                foreach (string category in makeToCategories[make])
+                {
+                    makeCategoryPage(make, category);
+                }
+            }
+        }
+
         public void makeCarPage(string model)
         {
             string page = getTopOfPage(model, "");
@@ -172,6 +176,13 @@ namespace LilPartsMaker
             System.IO.File.WriteAllText(saveLocation + @"\" + model + "_" + category + ".html", page);
         }
 
+        public void makeFlatCategoryPages()
+        {
+            foreach (string cat in categories)
+            {
+                makeFlatCategoryPage(cat);
+            }
+        }
         public void makeFlatCategoryPage(string category)
         {
             string page = getTopOfPage("", category);
@@ -462,7 +473,7 @@ namespace LilPartsMaker
 
             // Read the file and display it line by line.
             System.IO.StreamReader file =
-               new System.IO.StreamReader(topOfPageFile);
+               new System.IO.StreamReader(TOP_OF_PAGE_FILE);
             while ((line = file.ReadLine()) != null)
             {
                 
@@ -500,7 +511,7 @@ namespace LilPartsMaker
 
             // Read the file and display it line by line.
             System.IO.StreamReader file =
-               new System.IO.StreamReader(topOfPageFile);
+               new System.IO.StreamReader(TOP_OF_PAGE_FILE);
             while ((line = file.ReadLine()) != null)
             {
 
@@ -730,7 +741,7 @@ namespace LilPartsMaker
 
             // Read the file and display it line by line.
             System.IO.StreamReader file =
-               new System.IO.StreamReader(bottomOfPageFile);
+               new System.IO.StreamReader(BOTTOM_OF_PAGE_FILE);
             while ((line = file.ReadLine()) != null)
             {
                     output += line + "\n";

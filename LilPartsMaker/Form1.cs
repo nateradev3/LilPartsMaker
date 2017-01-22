@@ -22,7 +22,7 @@ namespace LilPartsMaker
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)//generate button
+        private void generateButtonPress(object sender, EventArgs e)//generate button
         {
             if ((xlsFile == null || xlsFile.Equals("")) && (csvFile == null || csvFile.Equals("")) || saveLocation == null || saveLocation.Equals(""))
             {
@@ -43,28 +43,15 @@ namespace LilPartsMaker
                 MessageBox.Show("Website failed to generate");
                 return;
             }
-            Dictionary<string, ArrayList> map = wm.getMakeToCategories();
-
-            foreach (string s in wm.getMakes()) {
-                wm.makeCarPage(s);
-                //get categories of this make
-                    
-                foreach (string cat in map[s])
-                    {
-                        wm.makeCategoryPage(s, cat);
-                    }
-            }
-            foreach (string cat in wm.getCategories())
-            {
-                wm.makeFlatCategoryPage(cat);
-            }
+            wm.makeCarAndCategoryPages();
+            wm.makeFlatCategoryPages();
             wm.makeIndividualPages();
             wm.makeAllPage();
             wm.makeSqlCode();
             MessageBox.Show("Website successfully generated");
         }
 
-        private void browseButton1_Click(object sender, EventArgs e)//browseCsv
+        private void browseCSV(object sender, EventArgs e)//browseCsv
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
@@ -85,12 +72,12 @@ namespace LilPartsMaker
         }
 
 
-        private void textBox1_TextChanged(object sender, EventArgs e)//xlstextBox
+        private void onXLSTextChanged(object sender, EventArgs e)//xlstextBox
         {
             xlsFile = textBox1.Text;
         }
 
-        private void button3_Click(object sender, EventArgs e)//xls browse
+        private void browseXLS(object sender, EventArgs e)//xls browse
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "XLS Files (.xls)|*.xls|All Files (*.*)|*.*";
@@ -104,7 +91,7 @@ namespace LilPartsMaker
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)//save location
+        private void browseSaveLocation(object sender, EventArgs e)//save location
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
@@ -119,11 +106,6 @@ namespace LilPartsMaker
         private void tb_saveLocation_TextChanged(object sender, EventArgs e)//save location
         {
             saveLocation = tb_saveLocation.Text;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
